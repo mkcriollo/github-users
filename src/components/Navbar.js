@@ -1,9 +1,23 @@
-import React from 'react';
-import styled from 'styled-components';
-import { useAuth0 } from '@auth0/auth0-react';
+import React from "react";
+import styled from "styled-components";
+import { useAuth0 } from "@auth0/auth0-react";
 
+/*
+Notes: 
+- add image from useAuth
+- add logout function from useAuth
+- Change h4 to show the name of the Auth User 
+*/
 const Navbar = () => {
-  return <h2>navbar component</h2>;
+  return (
+    <Wrapper>
+      <img></img>
+      <h4>
+        Welcome, <b>Mike Criollo</b>
+      </h4>
+      <button>Logout</button>
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.nav`
