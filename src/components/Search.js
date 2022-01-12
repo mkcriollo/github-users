@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { MdSearch } from "react-icons/md";
-import { GithubContext } from "../context/context";
+import { useGlobalContext } from "../context/context";
 /*
 Notes: 
 - once context is finish 
@@ -9,14 +9,23 @@ Notes:
 - on input change we will be setting the state for the query
 */
 const Search = () => {
+  const { setQuery, handleSubmit, query } = useGlobalContext();
+
   return (
     <section className="section">
       <Wrapper className="section-center">
         <form>
           <div className="form-control">
             <MdSearch />
-            <input type="text" placeholder="Enter Github User"></input>
-            <button type="submit">Search</button>
+            <input
+              type="text"
+              value={query}
+              placeholder="Enter Github User"
+              onChange={(e) => setQuery(e.target.value)}
+            ></input>
+            <button type="submit" onClick={handleSubmit}>
+              Search
+            </button>
           </div>
         </form>
         <h3>Requests: 56 / 60</h3>

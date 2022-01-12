@@ -14,9 +14,33 @@ const GithubProvider = ({ children }) => {
   const [user, setUser] = useState(mockUser);
   const [followers, setFollowers] = useState(mockFollowers);
   const [repos, setRepos] = useState(mockRepos);
+  const [loading, setLoading] = useState(false);
+
+  const fetchData = async (url) => {
+    setLoading(true);
+    try {
+      const res = await axios.get(url);
+      const data = res.data;
+      if (data) {
+        setUser(data);
+        setLoading(false);
+      }
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const url = `${rootUrl}/users/${query}`;
+    fetchData(url);
+  };
 
   return (
-    <AppContext.Provider value={{ query, setQuery, user, followers, repos }}>
+    <AppContext.Provider
+      value={{ query, setQuery, user, followers, repos, handleSubmit }}
+    >
       {children}
     </AppContext.Provider>
   );
