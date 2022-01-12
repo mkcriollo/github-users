@@ -1,9 +1,32 @@
-import React from 'react';
-import { GithubContext } from '../context/context';
-import styled from 'styled-components';
+import React from "react";
+import { GithubContext } from "../context/context";
+import styled from "styled-components";
+
+/* 
+Notes:
+- get followers data from context 
+- template is set just import the data in the correct sections 
+- Check link to make sure it navigates to that users github
+*/
 
 const Followers = () => {
-  return <h2>followers component</h2>;
+  return (
+    <Wrapper>
+      <div className="followers">
+        {/* {Followers.map((follower, idx) => {
+          return (
+            <article key={idx}>
+              <img></img>
+              <div>
+                <h4></h4>
+                <p></p>
+              </div>
+            </article>
+          )
+        })} */}
+      </div>
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.article`
@@ -14,7 +37,7 @@ const Wrapper = styled.article`
   position: relative;
 
   &::before {
-    content: ' followers';
+    content: " followers";
     position: absolute;
     top: 0;
     left: 0;

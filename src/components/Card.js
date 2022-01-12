@@ -2,6 +2,15 @@ import React from "react";
 import { GithubContext } from "../context/context";
 import styled from "styled-components";
 import { MdBusiness, MdLocationOn, MdLink } from "react-icons/md";
+
+/*
+Notes:
+- get users info from context
+- update static info with data received 
+- make sure all links are working
+  - follow => direct to github
+  - user link => personal page (or whatever page they link to => check github)
+*/
 const Card = () => {
   return (
     <Wrapper>
