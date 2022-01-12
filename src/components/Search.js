@@ -9,7 +9,7 @@ Notes:
 - on input change we will be setting the state for the query
 */
 const Search = () => {
-  const { setQuery, handleSubmit, query } = useGlobalContext();
+  const { setQuery, handleSubmit, query, request } = useGlobalContext();
 
   return (
     <section className="section">
@@ -23,12 +23,14 @@ const Search = () => {
               placeholder="Enter Github User"
               onChange={(e) => setQuery(e.target.value)}
             ></input>
-            <button type="submit" onClick={handleSubmit}>
-              Search
-            </button>
+            {request > 0 && (
+              <button type="submit" onClick={handleSubmit}>
+                Search
+              </button>
+            )}
           </div>
         </form>
-        <h3>Requests: 56 / 60</h3>
+        <h3>Requests: {request} / 60</h3>
       </Wrapper>
     </section>
   );

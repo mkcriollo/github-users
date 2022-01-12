@@ -15,31 +15,58 @@ const GithubProvider = ({ children }) => {
   const [followers, setFollowers] = useState(mockFollowers);
   const [repos, setRepos] = useState(mockRepos);
   const [loading, setLoading] = useState(false);
+  const [request, setRequest] = useState(0);
 
-  const fetchData = async (url) => {
+  const fetchData = async () => {
     setLoading(true);
-    try {
-      const res = await axios.get(url);
-      const data = res.data;
-      if (data) {
-        setUser(data);
-        setLoading(false);
-      }
-      console.log(res);
-    } catch (err) {
-      console.log(err);
+
+    const res = await axios(`${rootUrl}/users/${query}`);
+    if (res) {
+      setUser(res.data);
+      const { repos_url, followers_url } = res.data;
+      Promise.allSettled([
+        axios(`${followers_url}?per_page=100`),
+        axios(`${repos_url}?per_page=100`),
+      ])
+        .then((res) => {
+          const followers = res[0].value.data;
+          const repos = res[1].value.data;
+          setFollowers(followers);
+          setRepos(repos);
+        })
+        .catch((err) => console.log(err));
+    } else {
     }
+    setLoading(false);
+  };
+
+  const calculateRequest = () => {
+    axios(`${rootUrl}/rate_limit`)
+      .then(({ data }) => {
+        const {
+          rate: { limit, remaining },
+        } = data;
+        setRequest(remaining);
+        if (remaining === 0) {
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const url = `${rootUrl}/users/${query}`;
-    fetchData(url);
+    fetchData();
   };
+
+  useEffect(() => {
+    calculateRequest();
+  }, []);
 
   return (
     <AppContext.Provider
-      value={{ query, setQuery, user, followers, repos, handleSubmit }}
+      value={{ query, setQuery, user, followers, repos, handleSubmit, request }}
     >
       {children}
     </AppContext.Provider>
