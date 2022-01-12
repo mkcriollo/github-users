@@ -1,11 +1,59 @@
-import React from 'react';
-import { GithubContext } from '../context/context';
-import styled from 'styled-components';
-import { GoRepo, GoGist } from 'react-icons/go';
-import { FiUsers, FiUserPlus } from 'react-icons/fi';
+import React from "react";
+import { GithubContext } from "../context/context";
+import styled from "styled-components";
+import { GoRepo, GoGist } from "react-icons/go";
+import { FiUsers, FiUserPlus } from "react-icons/fi";
+
+/* 
+Notes:
+- use fetch to get info on repo count, followers, following, gists
+- update the static numbers with actual data 
+*/
 
 const UserInfo = () => {
-  return <h2>user info component</h2>;
+  return (
+    <section className="section">
+      <Wrapper className="section-center">
+        <article className="item">
+          <span className="pink">
+            <GoRepo className="icon" />
+          </span>
+          <div>
+            <h3>32487</h3>
+            <p>Repos</p>
+          </div>
+        </article>
+        <article className="item">
+          <span className="green">
+            <FiUsers className="icon" />
+          </span>
+          <div>
+            <h3>8709</h3>
+            <p>followers</p>
+          </div>
+        </article>
+        <article className="item">
+          <span className="purple">
+            <FiUserPlus className="icon" />
+          </span>
+          <div>
+            <h3>0</h3>
+            <p>following</p>
+          </div>
+        </article>
+        <article className="item">
+          <span className="yellow">
+            <GoGist className="icon" />
+          </span>
+
+          <div>
+            <h3>0</h3>
+            <p>gists</p>
+          </div>
+        </article>
+      </Wrapper>
+    </section>
+  );
 };
 
 const Wrapper = styled.section`
