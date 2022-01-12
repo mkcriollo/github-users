@@ -1,9 +1,32 @@
-import React from 'react';
-import { GithubContext } from '../context/context';
-import styled from 'styled-components';
-import { MdBusiness, MdLocationOn, MdLink } from 'react-icons/md';
+import React from "react";
+import { GithubContext } from "../context/context";
+import styled from "styled-components";
+import { MdBusiness, MdLocationOn, MdLink } from "react-icons/md";
 const Card = () => {
-  return <h2>card component</h2>;
+  return (
+    <Wrapper>
+      <header>
+        <img></img>
+        <div>
+          <h4>John Smilga</h4>
+          <p>@john_smilga</p>
+        </div>
+        <a>Follow</a>
+      </header>
+      <p className="bio">
+        <p>
+          <MdBusiness />
+        </p>
+        <p>
+          <MdLocationOn />
+        </p>
+        <a>
+          <MdLink />
+        </a>
+      </p>
+      <div className="links"></div>
+    </Wrapper>
+  );
 };
 const Wrapper = styled.article`
   background: var(--clr-white);
@@ -13,7 +36,7 @@ const Wrapper = styled.article`
   border-bottom-right-radius: var(--radius);
   position: relative;
   &::before {
-    content: 'user';
+    content: "user";
     position: absolute;
     top: 0;
     left: 0;
