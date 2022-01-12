@@ -1,9 +1,42 @@
-import React from 'react';
-import styled from 'styled-components';
-import { GithubContext } from '../context/context';
-import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from './Charts';
+import React from "react";
+import styled from "styled-components";
+import { GithubContext } from "../context/context";
+import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from "./Charts";
+
+/*
+Notes: 
+- create table templates
+- using repo data fill out the charts 
+- make sure they updated based on the user 
+*/
+
 const Repos = () => {
-  return <h2>repos component</h2>;
+  return (
+    <section className="section">
+      <Wrapper className="section-center">
+        <div>
+          <span className="fusioncharts-container">
+            <Pie3D />
+          </span>
+        </div>
+        <div>
+          <span className="fusioncharts-container">
+            <Bar3D />
+          </span>
+        </div>
+        <div>
+          <span className="fusioncharts-container">
+            <Doughnut2D />
+          </span>
+        </div>
+        <div>
+          <span className="fusioncharts-container">
+            <Column3D />
+          </span>
+        </div>
+      </Wrapper>
+    </section>
+  );
 };
 
 const Wrapper = styled.div`

@@ -1,39 +1,48 @@
 import React from "react";
-import { GithubContext } from "../context/context";
+import { useGlobalContext } from "../context/context";
 import styled from "styled-components";
 import { MdBusiness, MdLocationOn, MdLink } from "react-icons/md";
 
-/*
-Notes:
-- get users info from context
-- update static info with data received 
-- make sure all links are working
-  - follow => direct to github
-  - user link => personal page (or whatever page they link to => check github)
-*/
 const Card = () => {
+  const { user } = useGlobalContext();
+
+  const {
+    id,
+    avatar_url,
+    name,
+    company,
+    html_url: github,
+    twitter_username,
+    bio,
+    location,
+    blog,
+  } = user;
+
   return (
     <Wrapper>
       <header>
-        <img></img>
+        <img src={avatar_url} alt={name}></img>
         <div>
-          <h4>John Smilga</h4>
-          <p>@john_smilga</p>
+          <h4>{name}</h4>
+          <p>@{twitter_username}</p>
         </div>
-        <a>Follow</a>
+        <a href={github}>Follow</a>
       </header>
-      <p className="bio">
+      <p className="bio">{bio}</p>
+      <div className="links">
         <p>
           <MdBusiness />
+          {company}
         </p>
         <p>
           <MdLocationOn />
+          {location}
         </p>
-        <a>
+        <a href={`https://${blog}`}>
           <MdLink />
+          {blog}
         </a>
-      </p>
-      <div className="links"></div>
+      </div>
     </Wrapper>
   );
 };

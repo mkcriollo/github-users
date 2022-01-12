@@ -1,5 +1,5 @@
 import React from "react";
-import { GithubContext } from "../context/context";
+import { useGlobalContext } from "../context/context";
 import styled from "styled-components";
 import { GoRepo, GoGist } from "react-icons/go";
 import { FiUsers, FiUserPlus } from "react-icons/fi";
@@ -11,6 +11,14 @@ Notes:
 */
 
 const UserInfo = () => {
+  const { user } = useGlobalContext();
+
+  const {
+    public_repos: repos,
+    public_gists: gists,
+    followers,
+    following,
+  } = user;
   return (
     <section className="section">
       <Wrapper className="section-center">
@@ -19,7 +27,7 @@ const UserInfo = () => {
             <GoRepo className="icon" />
           </span>
           <div>
-            <h3>32487</h3>
+            <h3>{repos}</h3>
             <p>Repos</p>
           </div>
         </article>
@@ -28,7 +36,7 @@ const UserInfo = () => {
             <FiUsers className="icon" />
           </span>
           <div>
-            <h3>8709</h3>
+            <h3>{followers}</h3>
             <p>followers</p>
           </div>
         </article>
@@ -37,7 +45,7 @@ const UserInfo = () => {
             <FiUserPlus className="icon" />
           </span>
           <div>
-            <h3>0</h3>
+            <h3>{following}</h3>
             <p>following</p>
           </div>
         </article>
@@ -47,7 +55,7 @@ const UserInfo = () => {
           </span>
 
           <div>
-            <h3>0</h3>
+            <h3>{gists}</h3>
             <p>gists</p>
           </div>
         </article>

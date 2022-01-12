@@ -1,5 +1,5 @@
 import React from "react";
-import { GithubContext } from "../context/context";
+import { GithubContext, useGlobalContext } from "../context/context";
 import styled from "styled-components";
 
 /* 
@@ -10,20 +10,23 @@ Notes:
 */
 
 const Followers = () => {
+  const { followers } = useGlobalContext();
+
   return (
     <Wrapper>
       <div className="followers">
-        {/* {Followers.map((follower, idx) => {
+        {followers.map((follower, idx) => {
+          const { avatar_url, id, html_url: github, login } = follower;
           return (
             <article key={idx}>
-              <img></img>
+              <img src={avatar_url} alt={login}></img>
               <div>
-                <h4></h4>
-                <p></p>
+                <h4>{login}</h4>
+                <a href={github}>{github}</a>
               </div>
             </article>
-          )
-        })} */}
+          );
+        })}
       </div>
     </Wrapper>
   );
