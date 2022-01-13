@@ -5,19 +5,27 @@ import { useGlobalContext } from "../context/context";
 const Dashboard = () => {
   const { loading } = useGlobalContext();
 
+  if (loading) {
+    return (
+      <main>
+        <Navbar />
+        <Search />
+        <img
+          src={loadingImage}
+          className="loading-img"
+          alt="loading icon"
+        ></img>
+      </main>
+    );
+  }
+
   return (
     <main>
       <Navbar />
       <Search />
-      {loading ? (
-        <img src={loadingImage}></img>
-      ) : (
-        <>
-          <Info />
-          <User />
-          <Repos />
-        </>
-      )}
+      <Info />
+      <User />
+      <Repos />
     </main>
   );
 };

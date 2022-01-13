@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { GithubContext } from "../context/context";
+import { GithubContext, useGlobalContext } from "../context/context";
 import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from "./Charts";
 
 /*
@@ -11,29 +11,33 @@ Notes:
 */
 
 const Repos = () => {
+  const { repos } = useGlobalContext();
+
+  console.log(repos);
+
+  let languages = repos.reduce((total, item) => {
+    const { language } = item;
+    if (!language) return total;
+    if (!total[language]) {
+      total[language] = { label: language, value: 1 };
+    } else {
+      total[language] = {
+        ...total[language],
+        value: total[language].value + 1,
+      };
+    }
+    return total;
+  }, {});
+
+  languages = Object.values(languages).sort((a, b) => b.value - a.value);
+
   return (
     <section className="section">
       <Wrapper className="section-center">
-        <div>
-          <span className="fusioncharts-container">
-            <Pie3D />
-          </span>
-        </div>
-        <div>
-          <span className="fusioncharts-container">
-            <Bar3D />
-          </span>
-        </div>
-        <div>
-          <span className="fusioncharts-container">
-            <Doughnut2D />
-          </span>
-        </div>
-        <div>
-          <span className="fusioncharts-container">
-            <Column3D />
-          </span>
-        </div>
+        <Pie3D repo={languages} />
+        <Bar3D repo={repos} />
+        <Doughnut2D repo={repos} />
+        <Column3D repo={repos} />
       </Wrapper>
     </section>
   );

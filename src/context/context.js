@@ -16,11 +16,14 @@ const GithubProvider = ({ children }) => {
   const [repos, setRepos] = useState(mockRepos);
   const [loading, setLoading] = useState(false);
   const [request, setRequest] = useState(0);
+  const [error, setError] = useState({ show: false, msg: "" });
 
   const fetchData = async () => {
+    toggleError();
     setLoading(true);
-
-    const res = await axios(`${rootUrl}/users/${query}`);
+    const res = await axios(`${rootUrl}/users/${query}`).catch((err) =>
+      console.log(err)
+    );
     if (res) {
       setUser(res.data);
       const { repos_url, followers_url } = res.data;
@@ -29,15 +32,25 @@ const GithubProvider = ({ children }) => {
         axios(`${repos_url}?per_page=100`),
       ])
         .then((res) => {
-          const followers = res[0].value.data;
-          const repos = res[1].value.data;
-          setFollowers(followers);
-          setRepos(repos);
+          const [repos, followers] = res;
+          const status = "fulfilled";
+          if (repos.status === status) {
+            setRepos(repos.value.data);
+          }
+          if (followers.status === status) {
+            setFollowers(followers.value.data);
+          }
         })
         .catch((err) => console.log(err));
     } else {
+      toggleError(true, "There is no User with that Username");
     }
+    calculateRequest();
     setLoading(false);
+  };
+
+  const toggleError = (show = false, msg = "") => {
+    setError({ show, msg });
   };
 
   const calculateRequest = () => {
@@ -48,6 +61,7 @@ const GithubProvider = ({ children }) => {
         } = data;
         setRequest(remaining);
         if (remaining === 0) {
+          toggleError(true, "You have reach your hourly request");
         }
       })
       .catch((err) => {
@@ -66,7 +80,16 @@ const GithubProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{ query, setQuery, user, followers, repos, handleSubmit, request }}
+      value={{
+        query,
+        setQuery,
+        user,
+        followers,
+        repos,
+        handleSubmit,
+        request,
+        error,
+      }}
     >
       {children}
     </AppContext.Provider>

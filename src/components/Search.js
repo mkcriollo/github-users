@@ -9,11 +9,17 @@ Notes:
 - on input change we will be setting the state for the query
 */
 const Search = () => {
-  const { setQuery, handleSubmit, query, request } = useGlobalContext();
+  const { setQuery, handleSubmit, query, request, error } = useGlobalContext();
 
+  console.log(error);
   return (
     <section className="section">
       <Wrapper className="section-center">
+        {error.show && (
+          <ErrorWrapper>
+            <p>{error.msg}</p>
+          </ErrorWrapper>
+        )}
         <form>
           <div className="form-control">
             <MdSearch />
