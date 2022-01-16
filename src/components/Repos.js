@@ -29,13 +29,33 @@ const Repos = () => {
     return total;
   }, {});
 
+  let popular = repos.reduce((total, item) => {
+    const { stargazers_count, name } = item;
+    if (!name) return total;
+    if (!total[name]) {
+      total[name] = { label: name, value: stargazers_count };
+    } else {
+      total[name] = {
+        ...total[name],
+        value: total[name].value + stargazers_count,
+      };
+    }
+    return total;
+  }, {});
+
   languages = Object.values(languages).sort((a, b) => b.value - a.value);
+
+  popular = Object.values(popular)
+    .sort((a, b) => b.value - a.value)
+    .slice(0, 5);
+
+  console.log(popular);
 
   return (
     <section className="section">
       <Wrapper className="section-center">
         <Pie3D repo={languages} />
-        <Bar3D repo={repos} />
+        <Bar3D repo={popular} />
         <Doughnut2D repo={repos} />
         <Column3D repo={repos} />
       </Wrapper>
