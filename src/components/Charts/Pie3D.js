@@ -16,6 +16,7 @@ const Pie3D = ({ repo }) => {
     dataSource: {
       chart: {
         caption: "Languages",
+        captionFontBold: "1",
         decimals: "0",
         pieRadius: "50%",
         theme: "fusion",
