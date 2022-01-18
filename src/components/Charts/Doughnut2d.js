@@ -16,6 +16,7 @@ const Doughnut2d = ({ repo }) => {
       chart: {
         caption: "Stars Per Language",
         pieRadius: "45%",
+        theme: "fusion",
       },
       data: repo,
     },

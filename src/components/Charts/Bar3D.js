@@ -17,6 +17,7 @@ const Bar3D = ({ repo }) => {
         caption: "Most Popular",
         yAxisName: "Repos",
         xAxisName: "Stars",
+        theme: "fusion",
       },
       data: repo,
     },
