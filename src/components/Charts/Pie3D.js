@@ -19,6 +19,8 @@ const Pie3D = ({ repo }) => {
         decimals: "0",
         pieRadius: "50%",
         theme: "fusion",
+        width: "100%",
+        height: "400",
       },
       data: repo,
     },

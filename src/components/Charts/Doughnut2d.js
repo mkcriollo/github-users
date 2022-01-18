@@ -17,6 +17,8 @@ const Doughnut2d = ({ repo }) => {
         caption: "Stars Per Language",
         pieRadius: "45%",
         theme: "fusion",
+        width: "100%",
+        height: "400",
       },
       data: repo,
     },

@@ -21,6 +21,8 @@ const Column3DChart = ({ repo }) => {
         yAxisName: "Repos", //Set the y-axis name
         numberSuffix: "K",
         theme: "fusion", //Set the theme for your chart
+        width: "100%",
+        height: "400",
       },
       data: repo,
     },

@@ -15,6 +15,8 @@ const Bar3D = ({ repo }) => {
     dataSource: {
       chart: {
         caption: "Most Popular",
+        width: "100%",
+        height: "400",
         yAxisName: "Repos",
         xAxisName: "Stars",
         theme: "fusion",
