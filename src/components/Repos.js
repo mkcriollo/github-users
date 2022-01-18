@@ -13,7 +13,49 @@ Notes:
 const Repos = () => {
   const { repos } = useGlobalContext();
 
-  console.log(repos);
+  // const { language, stargazers_count, name, watchers, forks } = repos;
+
+  // const chartInfo = (arr, name, count) => {
+  //   const data = arr.reduce((total, item) => {
+  //     if (!name) return total;
+  //     if (!total[name]) {
+  //       total[name] = { label: name, value: count };
+  //     } else {
+  //       total[name] = {
+  //         ...total[name],
+  //         value: total[name].value + count,
+  //       };
+  //     }
+  //     return total;
+  //   }, {});
+
+  //   console.log(data);
+  // };
+
+  // const sortData = (arr) => {
+  //   return Object.values(arr)
+  //     .sort((a, b) => b.value - a.value)
+  //     .slice(0, 5);
+  // };
+
+  // let forkData = chartInfo(repos, name, forks);
+  // let languageData = sortData(chartInfo(repos, language, 1));
+  // let starData = sortData(chartInfo(repos, language, stargazers_count));
+  // let popularData = sortData(chartInfo(repos, name, watchers));
+
+  let forks = repos.reduce((total, item) => {
+    const { name, forks } = item;
+    if (!name) return total;
+    if (!total[name]) {
+      total[name] = { label: name, value: forks };
+    } else {
+      total[name] = {
+        ...total[name],
+        value: total[name].value + forks,
+      };
+    }
+    return total;
+  }, {});
 
   let languages = repos.reduce((total, item) => {
     const { language } = item;
@@ -57,7 +99,12 @@ const Repos = () => {
     return total;
   }, {});
 
-  languages = Object.values(languages).sort((a, b) => b.value - a.value);
+  forks = Object.values(forks)
+    .sort((a, b) => b.value - a.value)
+    .slice(0, 5);
+  languages = Object.values(languages)
+    .sort((a, b) => b.value - a.value)
+    .slice(0, 5);
   stars = Object.values(stars)
     .sort((a, b) => b.value - a.value)
     .slice(0, 5);
@@ -65,15 +112,13 @@ const Repos = () => {
     .sort((a, b) => b.value - a.value)
     .slice(0, 5);
 
-  console.log(stars);
-
   return (
     <section className="section">
       <Wrapper className="section-center">
         <Pie3D repo={languages} />
         <Bar3D repo={popular} />
         <Doughnut2D repo={stars} />
-        <Column3D repo={repos} />
+        <Column3D repo={forks} />
       </Wrapper>
     </section>
   );
