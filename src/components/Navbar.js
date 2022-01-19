@@ -9,18 +9,20 @@ Notes:
 - Change h4 to show the name of the Auth User 
 */
 const Navbar = () => {
-  const { logout, user, isLoading, isAuthenticated } = useAuth0();
+  const { logout, user, isAuthenticated } = useAuth0();
 
-  if (isLoading) {
-    return <div className="loading"></div>;
-  }
-  console.log(user);
+  const isUser = isAuthenticated && user;
+
   return (
     <Wrapper>
-      <img src={user.picture}></img>
-      <h4>
-        Welcome, <b>{user.name}</b>
-      </h4>
+      {isUser && (
+        <>
+          <img src={user.picture}></img>
+          <h4>
+            Welcome, <b>{user.name}</b>
+          </h4>
+        </>
+      )}
       <button onClick={() => logout()}>Logout</button>
     </Wrapper>
   );
