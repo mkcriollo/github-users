@@ -21,9 +21,7 @@ const GithubProvider = ({ children }) => {
   const fetchData = async () => {
     toggleError();
     setLoading(true);
-    const res = await axios(`${rootUrl}/users/${query}`).catch((err) =>
-      console.log(err)
-    );
+    const res = await axios(`${rootUrl}/users/${query}`).catch((err) => err);
     if (res) {
       setUser(res.data);
       const { repos_url, followers_url } = res.data;
@@ -33,7 +31,7 @@ const GithubProvider = ({ children }) => {
       ])
         .then((res) => {
           const [followers, repos] = res;
-          console.log(repos, followers);
+
           const status = "fulfilled";
           if (repos.status === status) {
             setRepos(repos.value.data);
@@ -42,7 +40,7 @@ const GithubProvider = ({ children }) => {
             setFollowers(followers.value.data);
           }
         })
-        .catch((err) => console.log(err));
+        .catch((err) => err);
     } else {
       toggleError(true, "There is no User with that Username");
     }

@@ -11,7 +11,6 @@ Notes:
 const Search = () => {
   const { setQuery, handleSubmit, query, request, error } = useGlobalContext();
 
-  console.log(error);
   return (
     <section className="section">
       <Wrapper className="section-center">

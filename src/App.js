@@ -16,7 +16,7 @@ import { createBrowserHistory } from "history";
 // };
 
 function App() {
-  // console.log(history);
+  // (history);
   return (
     <BrowserRouter>
       <Switch>

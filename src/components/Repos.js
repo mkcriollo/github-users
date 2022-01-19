@@ -29,7 +29,7 @@ const Repos = () => {
   //     return total;
   //   }, {});
 
-  //   console.log(data);
+  //   (data);
   // };
 
   // const sortData = (arr) => {
