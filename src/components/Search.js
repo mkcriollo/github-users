@@ -9,7 +9,8 @@ Notes:
 - on input change we will be setting the state for the query
 */
 const Search = () => {
-  const { setQuery, handleSubmit, query, request, error } = useGlobalContext();
+  const { setQuery, handleSubmit, query, request, error, loading } =
+    useGlobalContext();
 
   return (
     <section className="section">
@@ -28,7 +29,7 @@ const Search = () => {
               placeholder="Enter Github User"
               onChange={(e) => setQuery(e.target.value)}
             ></input>
-            {request > 0 && (
+            {request > 0 && !loading && (
               <button type="submit" onClick={handleSubmit}>
                 Search
               </button>

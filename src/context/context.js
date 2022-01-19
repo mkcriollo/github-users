@@ -88,6 +88,7 @@ const GithubProvider = ({ children }) => {
         handleSubmit,
         request,
         error,
+        loading,
       }}
     >
       {children}
