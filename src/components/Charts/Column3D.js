@@ -10,7 +10,7 @@ const Column3DChart = ({ repo }) => {
   // const {forks,forks_count, language, fork} = repo
   const chartConfig = {
     type: "column3d",
-    width: "700",
+    width: "100%",
     height: "400",
     dataFormat: "json",
     dataSource: {

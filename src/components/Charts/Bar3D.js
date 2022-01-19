@@ -9,7 +9,7 @@ ReactFC.fcRoot(FusionCharts, Chart, FusionTheme);
 const Bar3D = ({ repo }) => {
   const chartConfig = {
     type: "bar3d",
-    width: "600",
+    width: "100%",
     height: "400",
     dataFormat: "json",
     dataSource: {
