@@ -18,15 +18,17 @@ import { createBrowserHistory } from "history";
 function App() {
   // (history);
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/login" component={Login} />
-        <PrivateRoute exact path="/">
-          <Dashboard></Dashboard>
-        </PrivateRoute>
-        <Route path="*" component={Error} />
-      </Switch>
-    </BrowserRouter>
+    <AuthWrapper>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/login" component={Login} />
+          <PrivateRoute exact path="/">
+            <Dashboard></Dashboard>
+          </PrivateRoute>
+          <Route path="*" component={Error} />
+        </Switch>
+      </BrowserRouter>
+    </AuthWrapper>
   );
 }
 
