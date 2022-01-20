@@ -2,7 +2,7 @@ import React from "react";
 import ReactFC from "react-fusioncharts";
 import FusionCharts from "fusioncharts";
 import Column3D from "fusioncharts/fusioncharts.charts";
-import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
+import FusionTheme from "fusioncharts/themes/fusioncharts.theme.candy";
 
 ReactFC.fcRoot(FusionCharts, Column3D, FusionTheme);
 
@@ -16,13 +16,10 @@ const Column3DChart = ({ repo }) => {
     dataSource: {
       chart: {
         caption: "Most Forked", //Set the chart caption
-        subCaption: "", //Set the chart subcaption
         xAxisName: "Forks", //Set the x-axis name
         yAxisName: "Repos", //Set the y-axis name
         numberSuffix: "K",
-        theme: "fusion", //Set the theme for your chart
-        width: "100%",
-        height: "400",
+        theme: "candy", //Set the theme for your chart
       },
       data: repo,
     },

@@ -31,7 +31,7 @@ const Navbar = () => {
 const Wrapper = styled.nav`
   padding: 1.5rem;
   margin-bottom: 4rem;
-  background: var(--clr-white);
+  background: var(--clr-dark-navy);
   text-align: center;
   display: grid;
   grid-template-columns: auto auto 100px;
@@ -54,7 +54,7 @@ const Wrapper = styled.nav`
     font-size: 1.2rem;
     text-transform: capitalize;
     letter-spacing: var(--spacing);
-    color: var(--clr-grey-5);
+    color: var(--clr-grey-8);
     cursor: pointer;
   }
 `;

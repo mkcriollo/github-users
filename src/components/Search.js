@@ -54,7 +54,7 @@ const Wrapper = styled.div`
     }
   }
   .form-control {
-    background: var(--clr-white);
+    background: var(--clr-dark-grey);
     display: grid;
     align-items: center;
     grid-template-columns: auto 1fr auto;
@@ -62,16 +62,21 @@ const Wrapper = styled.div`
     border-radius: 5px;
     padding: 0.5rem;
     input {
+      background: var(--clr-dark-grey);
       border-color: transparent;
       outline-color: var(--clr-grey-10);
       letter-spacing: var(--spacing);
-      color: var(--clr-grey-3);
+      color: var(--clr-white);
       padding: 0.25rem 0.5rem;
     }
     input::placeholder {
-      color: var(--clr-grey-3);
+      color: var(--clr-grey-8);
       text-transform: capitalize;
       letter-spacing: var(--spacing);
+    }
+    input:focus {
+      outline: none;
+      border: 1px solid var(--clr-dark-grey);
     }
     button {
       border-radius: 5px;
@@ -107,7 +112,7 @@ const Wrapper = styled.div`
   }
   h3 {
     margin-bottom: 0;
-    color: var(--clr-grey-5);
+    color: var(--clr-grey-8);
     font-weight: 400;
   }
 `;

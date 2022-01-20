@@ -74,7 +74,7 @@ const Wrapper = styled.section`
   .item {
     border-radius: var(--radius);
     padding: 1rem 2rem;
-    background: var(--clr-white);
+    background: var(--clr-dark-navy);
     display: grid;
     grid-template-columns: auto 1fr;
     column-gap: 3rem;

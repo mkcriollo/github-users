@@ -3,7 +3,7 @@ import ReactDOM from "react";
 import ReactFC from "react-fusioncharts";
 import FusionCharts from "fusioncharts";
 import Chart from "fusioncharts/fusioncharts.charts";
-import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
+import FusionTheme from "fusioncharts/themes/fusioncharts.theme.candy";
 
 ReactFC.fcRoot(FusionCharts, Chart, FusionTheme);
 
@@ -16,12 +16,10 @@ const Pie3D = ({ repo }) => {
     dataSource: {
       chart: {
         caption: "Languages",
-        captionFontBold: "1",
-        decimals: "0",
-        pieRadius: "50%",
-        theme: "fusion",
-        width: "100%",
-        height: "400",
+        captionFontBold: 1,
+        decimals: 0,
+        pieRadius: "45%",
+        theme: "candy",
       },
       data: repo,
     },

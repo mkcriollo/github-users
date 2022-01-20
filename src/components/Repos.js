@@ -13,36 +13,6 @@ Notes:
 const Repos = () => {
   const { repos } = useGlobalContext();
 
-  // const { language, stargazers_count, name, watchers, forks } = repos;
-
-  // const chartInfo = (arr, name, count) => {
-  //   const data = arr.reduce((total, item) => {
-  //     if (!name) return total;
-  //     if (!total[name]) {
-  //       total[name] = { label: name, value: count };
-  //     } else {
-  //       total[name] = {
-  //         ...total[name],
-  //         value: total[name].value + count,
-  //       };
-  //     }
-  //     return total;
-  //   }, {});
-
-  //   (data);
-  // };
-
-  // const sortData = (arr) => {
-  //   return Object.values(arr)
-  //     .sort((a, b) => b.value - a.value)
-  //     .slice(0, 5);
-  // };
-
-  // let forkData = chartInfo(repos, name, forks);
-  // let languageData = sortData(chartInfo(repos, language, 1));
-  // let starData = sortData(chartInfo(repos, language, stargazers_count));
-  // let popularData = sortData(chartInfo(repos, name, watchers));
-
   let forks = repos.reduce((total, item) => {
     const { name, forks } = item;
     if (!name) return total;
@@ -57,29 +27,16 @@ const Repos = () => {
     return total;
   }, {});
 
-  let languages = repos.reduce((total, item) => {
-    const { language } = item;
+  const languages = repos.reduce((total, item) => {
+    const { language, stargazers_count } = item;
     if (!language) return total;
     if (!total[language]) {
-      total[language] = { label: language, value: 1 };
+      total[language] = { label: language, value: 1, stars: stargazers_count };
     } else {
       total[language] = {
         ...total[language],
         value: total[language].value + 1,
-      };
-    }
-    return total;
-  }, {});
-
-  let stars = repos.reduce((total, item) => {
-    const { stargazers_count, language } = item;
-    if (!language) return total;
-    if (!total[language]) {
-      total[language] = { label: language, value: stargazers_count };
-    } else {
-      total[language] = {
-        ...total[language],
-        value: total[language].value + stargazers_count,
+        stars: total[language].stars + stargazers_count,
       };
     }
     return total;
@@ -102,20 +59,39 @@ const Repos = () => {
   forks = Object.values(forks)
     .sort((a, b) => b.value - a.value)
     .slice(0, 5);
-  languages = Object.values(languages)
+  const mostLang = Object.values(languages)
     .sort((a, b) => b.value - a.value)
     .slice(0, 5);
-  stars = Object.values(stars)
-    .sort((a, b) => b.value - a.value)
+  const stars = Object.values(languages)
+    .sort((a, b) => b.stars - a.stars)
+    .map((item) => {
+      return { ...item, value: item.stars };
+    })
     .slice(0, 5);
   popular = Object.values(popular)
     .sort((a, b) => b.value - a.value)
     .slice(0, 5);
 
+  // Prev work (create another reduce function for stars => didn't use because it will use more memory used)
+
+  // let stars = repos.reduce((total, item) => {
+  //   const { stargazers_count, language } = item;
+  //   if (!language) return total;
+  //   if (!total[language]) {
+  //     total[language] = { label: language, value: stargazers_count };
+  //   } else {
+  //     total[language] = {
+  //       ...total[language],
+  //       value: total[language].value + stargazers_count,
+  //     };
+  //   }
+  //   return total;
+  // }, {});
+
   return (
     <section className="section">
       <Wrapper className="section-center">
-        <Pie3D repo={languages} />
+        <Pie3D repo={mostLang} />
         <Bar3D repo={popular} />
         <Doughnut2D repo={stars} />
         <Column3D repo={forks} />

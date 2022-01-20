@@ -46,8 +46,10 @@ const Card = () => {
     </Wrapper>
   );
 };
+//background: var(--clr-white);
+//color: var(--clr-grey-5);
 const Wrapper = styled.article`
-  background: var(--clr-white);
+  background: var(--clr-dark-navy);
   padding: 1.5rem 2rem;
   border-top-right-radius: var(--radius);
   border-bottom-left-radius: var(--radius);
@@ -59,8 +61,8 @@ const Wrapper = styled.article`
     top: 0;
     left: 0;
     transform: translateY(-100%);
-    background: var(--clr-white);
-    color: var(--clr-grey-5);
+    background: var(--clr-dark-navy);
+    color: var(--clr-white);
     border-top-right-radius: var(--radius);
     border-top-left-radius: var(--radius);
     text-transform: capitalize;
@@ -101,7 +103,7 @@ const Wrapper = styled.article`
     }
   }
   .bio {
-    color: var(--clr-grey-3);
+    color: var(--clr-grey-7);
   }
   .links {
     p,

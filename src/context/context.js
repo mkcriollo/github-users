@@ -22,7 +22,7 @@ const GithubProvider = ({ children }) => {
     toggleError();
     setLoading(true);
     const res = await axios(`${rootUrl}/users/${query}`).catch((err) => err);
-    if (res) {
+    if (res && res.data) {
       setUser(res.data);
       const { repos_url, followers_url } = res.data;
       Promise.allSettled([
@@ -101,3 +101,12 @@ export const useGlobalContext = () => {
 };
 
 export { AppContext, GithubProvider };
+
+/*
+NOTES: TO DO
+
+- create a better landing page (login)
+- if there is no info for user add a default 
+
+
+*/
