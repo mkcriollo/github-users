@@ -1,6 +1,6 @@
 # GitHub Users
 
-Github Users is the home to quickly access visual data of any github user. Quickly be able to view the github user most used languages, most popular repos, most forked repos etc.
+[Github Users](https://mk-github-users.netlify.app/login) is the home to quickly access visual data of any github user. Quickly be able to view the github user most used languages, most popular repos, most forked repos etc.
 All data is presented in graphs for better vizualization. View a user card with that github user's info, as well be able to view a follwoing card which displays that users followers.
 
 ## Table of Contents
