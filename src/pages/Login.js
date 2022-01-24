@@ -7,6 +7,8 @@ import { FaGithubAlt } from "react-icons/fa";
 const Login = () => {
   const { loginWithRedirect } = useAuth0();
 
+  // Prev login design
+
   // return (
   //   <Wrapper>
   //     <div className="container">
