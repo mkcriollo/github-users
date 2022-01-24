@@ -10,7 +10,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Auth0Provider
       domain="dev-ddziaxei.us.auth0.com"
-      clientId={process.env.REACT_APP_CLIENT_ID}
+      clientId="LOQ6zxXrPWi2YFQphYtmsgvSlJhY3kBz"
       redirectUri={window.location.origin}
       cacheLocation="localstorage"
     >
