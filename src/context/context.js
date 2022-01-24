@@ -3,7 +3,6 @@ import mockUser from "./mockData.js/mockUser";
 import mockRepos from "./mockData.js/mockRepos";
 import mockFollowers from "./mockData.js/mockFollowers";
 import axios from "axios";
-import App from "../App";
 
 const rootUrl = "https://api.github.com";
 
@@ -56,7 +55,7 @@ const GithubProvider = ({ children }) => {
     axios(`${rootUrl}/rate_limit`)
       .then(({ data }) => {
         const {
-          rate: { limit, remaining },
+          rate: { remaining },
         } = data;
         setRequest(remaining);
         if (remaining === 0) {

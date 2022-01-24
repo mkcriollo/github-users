@@ -7,7 +7,6 @@ const Card = () => {
   const { user } = useGlobalContext();
 
   const {
-    id,
     avatar_url,
     name,
     company,

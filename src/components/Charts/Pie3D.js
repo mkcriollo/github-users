@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react";
 import ReactFC from "react-fusioncharts";
 import FusionCharts from "fusioncharts";
 import Chart from "fusioncharts/fusioncharts.charts";

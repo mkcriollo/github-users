@@ -2,12 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { useAuth0 } from "@auth0/auth0-react";
 
-/*
-Notes: 
-- add image from useAuth
-- add logout function from useAuth
-- Change h4 to show the name of the Auth User 
-*/
 const Navbar = () => {
   const { logout, user, isAuthenticated } = useAuth0();
 
@@ -17,7 +11,7 @@ const Navbar = () => {
     <Wrapper>
       {isUser && (
         <>
-          <img src={user.picture}></img>
+          <img src={user.picture} alt={user.name}></img>
           <h4>
             Welcome, <b>{user.name}</b>
           </h4>

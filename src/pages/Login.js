@@ -1,7 +1,6 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import styled from "styled-components";
-import loginImg from "../images/login-img.svg";
 import LogImg from "../images/github-cat.png";
 import { FaGithubAlt } from "react-icons/fa";
 const Login = () => {
@@ -41,7 +40,7 @@ const Login = () => {
               Login / Sign Up
             </button>
           </div>
-          <img className="right-half" src={LogImg}></img>
+          <img className="right-half" src={LogImg} alt="github cat"></img>
         </div>
       </div>
     </Wrapper>

@@ -14,7 +14,6 @@ const Doughnut2d = ({ repo }) => {
     dataSource: {
       chart: {
         caption: "Stars Per Language",
-        theme: "fusion",
         decimals: 0,
         showPercentValues: 0,
         doughnutRadius: "45%",
